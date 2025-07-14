@@ -7,11 +7,11 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
         const { id: formId } = params
         const post = await Forms.findOne({ _id: formId })
         if (!post) {
-            return Response.json({ error: 'Form not found' }, { status: 404 })
+            throw new Error("Form not found")
         }
         return Response.json(post)
     } catch (err) {
-        return Response.json({ error: "Something went wrong" })
+        return Response.json({ error: "Something went wrong" }, { status: 400 })
     }
 
 }
