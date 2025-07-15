@@ -3,7 +3,7 @@ export default function Home() {
 	return (
 		<div className="h-[100vh] p-2">
 			<div className="flex md:h-full">
-				<div className="hidden md:flex w-1/2 bg-[var(--foreground)] rounded-xl"></div>
+				<div className="hidden md:flex w-1/2 bg-primary rounded-xl"></div>
 				<div className="p-3 w-full md:w-1/2 flex flex-col items-start justify-center gap-2">
 					<h1 className="text-3xl primary-text">
 						Build Forms. Fast. Flexible.

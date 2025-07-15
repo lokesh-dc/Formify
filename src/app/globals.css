@@ -1,8 +1,15 @@
 @import "tailwindcss";
+@config "../../tailwind.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-alfa: #393a393a;
+  --white: #ffffff;
+  --black: #1f1f1f;
 }
 
 @theme inline {
@@ -28,6 +35,10 @@ body {
 h1 {
   color: black;
   font-size: 60px;
+}
+
+a {
+  color: var(--white);
 }
 
 .primary-text {
