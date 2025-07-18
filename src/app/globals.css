@@ -44,3 +44,7 @@ a {
 .primary-text {
   color: var(--foreground);
 }
+
+input:focus {
+  outline: none;
+}
