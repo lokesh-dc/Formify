@@ -1,18 +1,26 @@
 export default function InputField({
-	type,
-	placeholder,
-	value,
-	onChange,
-	required,
+	id = "",
+	type = "text",
+	label = "",
+	placeholder = "",
+	value = "",
+	changeHandler = () => {},
+	required = false,
 }) {
 	return (
-		<input
-			type={type}
-			placeholder={placeholder}
-			value={value}
-			required={required}
-			onChange={onChange}
-			className="p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-		/>
+		<div className="flex flex-col gap-1">
+			<label>
+				{label}{required ? <span className="text-red-600">*</span> : null}
+			</label>
+			<input
+				name={id}
+				type={type}
+				placeholder={placeholder}
+				value={value}
+				required={required}
+				onChange={changeHandler}
+				className="p-2 rounded border focus:outline-none focus:ring-2 focus:ring-primary"
+			/>
+		</div>
 	);
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getFormConfig, LoginFormConfigType } from "@/constants/forms/users";
 import PrimaryButton from "@/components/buttons/primaryButton";
 import FieldsContainer from "@/components/helpers/form/container";
+import { SwitchFormActionType } from "@/constants/forms";
 export default function AuthForm() {
 	const [currentForm, setCurrentForm] = useState(LoginFormConfigType);
 	const [currentFormConfig, setCurrentFormConfig] = useState(
@@ -14,11 +15,9 @@ export default function AuthForm() {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		// setLoading(true);
+		setLoading(true);
 		setError("");
-		// const endpoint = isLogin ? "/api/login" : "/api/signup";
 		const body = { email, password };
-
 		try {
 			const res = await fetch(endpoint, {
 				method: "POST",
@@ -29,20 +28,24 @@ export default function AuthForm() {
 			if (!res.ok) {
 				throw new Error(data.message || "Something went wrong");
 			}
-			// alert(isLogin ? "Logged in!" : "Signed up! You can login now.");
-			// if (!isLogin) setIsLogin(true);
 		} catch (err) {
 			setFormErrors(err.message);
 		} finally {
-			// setLoading(false);
+			setLoading(false);
 		}
 	}
 
 	return (
-		<div className="bg-primary flex flex-col gap-4 text-white p-6 rounded shadow-md max-w-sm w-full">
+		<div className="flex flex-col gap-4 p-6 max-w-sm w-full">
 			<h2 className="text-3xl">{currentFormConfig?.title}</h2>
 			<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-				<FieldsContainer config={currentFormConfig?.fields} />
+				<FieldsContainer
+					formErrors={formErrors}
+					formData={formState}
+					formDataSetter={setFormState}
+					formErrorSetter={setFormErrors}
+					config={currentFormConfig?.fields}
+				/>
 				<PrimaryButton
 					title={
 						loading
@@ -52,6 +55,29 @@ export default function AuthForm() {
 					type="submit"
 					disabled={loading}
 				/>
+				{currentFormConfig?.formHelpers ? (
+					<div className="flex gap-1 text-sm">
+						<span className="text-gray-900">
+							{currentFormConfig?.formHelpers?.title}
+						</span>
+						<span
+							className="cursor-pointer font-[600]"
+							onClick={() => {
+								if (
+									currentFormConfig?.formHelpers?.action?.type ===
+									SwitchFormActionType
+								) {
+									setCurrentForm(currentFormConfig?.formHelpers?.action?.to);
+									setCurrentFormConfig(
+										getFormConfig(currentFormConfig?.formHelpers?.action?.to)
+									);
+								}
+							}}
+						>
+							{currentFormConfig?.formHelpers?.subtitle}
+						</span>
+					</div>
+				) : null}
 			</form>
 		</div>
 	);

@@ -13,11 +13,7 @@ export default function Home() {
 						Drag. Drop. Deploy. Your Perfect Form Awaits.
 					</h3>
 
-					<PrimaryButton
-						linkTarget="/forms"
-						title="Get Started"
-						isLink={true}
-					/>
+					<PrimaryButton linkTarget="/auth" title="Get Started" isLink={true} />
 				</div>
 			</div>
 		</div>

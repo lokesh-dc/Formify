@@ -1,4 +1,4 @@
-import { InputFieldType } from "..";
+import { InputFieldType, SwitchFormActionType } from "..";
 
 export const LoginFormConfigType = "LoginFormConfig";
 export const SignupFormConfigType = "SignupFormConfig";
@@ -10,25 +10,35 @@ export const loginFormConfig = {
 			id: "email",
 			type: "email",
 			label: "Email",
-			placeholder: "Enter your email",
+			placeholder: "example@gmail.com",
 			required: true,
 			fieldType: InputFieldType,
 			validations: (email) => {
 				"/^[^s@]+@[^s@]+.[^s@]+$/".test(email);
 			},
+			errorMessage: "Please enter a valid email address",
 		},
 		{
 			id: "password",
 			type: "text",
 			label: "Password",
-			placeholder: "Enter your password",
+			placeholder: "*********",
 			required: true,
 			fieldType: InputFieldType,
 			isPassword: true,
+			errorMessage: "Please enter a valid password",
 		},
 	],
 	submitTitle: "Login",
 	submitLoadingTitle: "Logging you in...",
+	formHelpers: {
+		title: "Don't have an account?",
+		subtitle: "Signup now",
+		action: {
+			type: SwitchFormActionType,
+			to: SignupFormConfigType,
+		},
+	},
 };
 
 export const signupFormConfig = {
@@ -67,6 +77,14 @@ export const signupFormConfig = {
 	],
 	submitTitle: "Signup",
 	submitLoadingTitle: "Signing you up...",
+	formHelpers: {
+		title: "Already have an account?",
+		subtitle: "Login now",
+		action: {
+			type: SwitchFormActionType,
+			to: LoginFormConfigType,
+		},
+	},
 };
 
 export const getFormConfig = (type) => {

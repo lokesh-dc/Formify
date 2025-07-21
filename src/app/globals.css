@@ -8,7 +8,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary-alfa: #393a393a;
-  --white: #ffffff;
+  --white: #dadada;
   --black: #1f1f1f;
 }
 
@@ -28,7 +28,6 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -47,4 +46,29 @@ a {
 
 input:focus {
   outline: none;
+}
+
+input {
+  border: 1px solid var(--foreground);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.primary-button {
+  background-color: var(--primary-alfa);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+
+.bg-black * {
+  color: var(--white) !important;
+}
+
+.bg-black .primary-button {
+  background-color: var(--white) !important;
+  color: var(--foreground) !important;
 }
