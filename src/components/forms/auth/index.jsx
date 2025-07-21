@@ -67,9 +67,13 @@ export default function AuthForm() {
 									currentFormConfig?.formHelpers?.action?.type ===
 									SwitchFormActionType
 								) {
-									setCurrentForm(currentFormConfig?.formHelpers?.action?.to);
+									setCurrentForm(
+										currentFormConfig?.formHelpers?.action?.to || ""
+									);
 									setCurrentFormConfig(
-										getFormConfig(currentFormConfig?.formHelpers?.action?.to)
+										getFormConfig(
+											currentFormConfig?.formHelpers?.action?.to || ""
+										)
 									);
 								}
 							}}

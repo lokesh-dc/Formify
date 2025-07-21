@@ -8,19 +8,14 @@ export default function InputField({
 	required = false,
 }) {
 	return (
-		<div className="flex flex-col gap-1">
-			<label>
-				{label}{required ? <span className="text-red-600">*</span> : null}
-			</label>
-			<input
-				name={id}
-				type={type}
-				placeholder={placeholder}
-				value={value}
-				required={required}
-				onChange={changeHandler}
-				className="p-2 rounded border focus:outline-none focus:ring-2 focus:ring-primary"
-			/>
-		</div>
+		<input
+			name={id}
+			type={type}
+			placeholder={placeholder}
+			value={value}
+			required={required}
+			onChange={changeHandler}
+			className="p-2 rounded border focus:outline-none focus:ring-2 focus:ring-primary"
+		/>
 	);
 }

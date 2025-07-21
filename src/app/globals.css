@@ -5,29 +5,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --secondary: #b4b6af;
+  --primary: #3e443c;
   --primary-alfa: #393a393a;
   --white: #dadada;
   --black: #1f1f1f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #b8bab4;
-    --foreground: #4f564d;
-  }
+  --color-secondary: var(--secondary);
+  --color-primary: var(--primary);
 }
 
 body {
-  background: var(--background);
+  background: var(--secondary);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -36,12 +27,8 @@ h1 {
   font-size: 60px;
 }
 
-a {
-  color: var(--white);
-}
-
 .primary-text {
-  color: var(--foreground);
+  color: var(--primary);
 }
 
 input:focus {
@@ -49,13 +36,13 @@ input:focus {
 }
 
 input {
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--primary);
   padding: 8px;
   border-radius: 4px;
 }
 
 .primary-button {
-  background-color: var(--primary-alfa);
+  background-color: var(--primary);
   color: var(--white);
   padding: 8px 16px;
   border-radius: 4px;
@@ -70,5 +57,9 @@ input {
 
 .bg-black .primary-button {
   background-color: var(--white) !important;
-  color: var(--foreground) !important;
+  color: var(--primary) !important;
+}
+
+.circle-green-gradient {
+  background: radial-gradient(circle, rgba(79, 86, 77, 1) 10%, rgba(184, 186, 180, 1) 100%);
 }

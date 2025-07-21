@@ -12,7 +12,7 @@ export default function PrimaryButton({
 
 	return (
 		<Tag
-			className="bg-[#21261f] py-2 px-7 rounded-lg text-white primary-button"
+			className="bg-black py-2 px-7 rounded-lg text-white primary-button"
 			{...props}
 		>
 			{title}
