@@ -4,6 +4,7 @@ import { getFormConfig, LoginFormConfigType } from "@/constants/forms/users";
 import PrimaryButton from "@/components/buttons/primaryButton";
 import FieldsContainer from "@/components/helpers/form/container";
 import { SwitchFormActionType } from "@/constants/forms";
+import axios from "axios";
 export default function AuthForm() {
 	const [currentForm, setCurrentForm] = useState(LoginFormConfigType);
 	const [currentFormConfig, setCurrentFormConfig] = useState(
@@ -30,7 +31,16 @@ export default function AuthForm() {
 				error.details = currentErrors;
 				throw error;
 			}
+
+			delete formState["confirmPassword"];
+			const response = await axios.post(
+				currentFormConfig?.submitApi,
+				formState
+			);
+
+			console.log({ response });
 		} catch (err) {
+			console.error("Error during form submission:", err);
 			setFormErrors(
 				err.details || { common: "Something went wrong! Please try again" }
 			);
@@ -40,7 +50,7 @@ export default function AuthForm() {
 	}
 
 	return (
-		<div className="flex flex-col gap-4 p-6 max-w-sm w-full">
+		<div className="md:bg-transparent rounded-2xl flex flex-col gap-4 p-6 md:max-w-sm w-full">
 			<h2 className="text-3xl">{currentFormConfig?.title}</h2>
 			<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
 				<FieldsContainer

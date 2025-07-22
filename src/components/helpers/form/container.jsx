@@ -12,6 +12,7 @@ export default function FieldsContainer({
 		formDataSetter((prevData) => ({
 			...prevData,
 			[name]: value,
+			common: "",
 		}));
 	}
 

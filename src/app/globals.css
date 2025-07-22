@@ -63,3 +63,9 @@ input {
 .circle-green-gradient {
   background: radial-gradient(circle, rgba(79, 86, 77, 1) 10%, rgba(184, 186, 180, 1) 100%);
 }
+
+@media screen and (max-width : 480px) {
+  .circle-green-gradient {
+    background: radial-gradient(circle at bottom, rgba(79, 86, 77, 1) 10%, rgba(184, 186, 180, 1) 100%);
+  }
+}

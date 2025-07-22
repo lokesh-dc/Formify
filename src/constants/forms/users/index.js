@@ -46,15 +46,15 @@ export const signupFormConfig = {
 	title: "Welcome",
 	description: "Let's get you signed up in no time",
 	fields: [
-		{
-			id: "fullName",
-			type: "text",
-			label: "Full Name",
-			placeholder: "Lokesh Choudhary",
-			required: false,
-			fieldType: InputFieldType,
-			errorMessage: "Please enter your name",
-		},
+		// {
+		// 	id: "fullName",
+		// 	type: "text",
+		// 	label: "Full Name",
+		// 	placeholder: "Lokesh Choudhary",
+		// 	required: false,
+		// 	fieldType: InputFieldType,
+		// 	errorMessage: "Please enter your name",
+		// },
 		{
 			id: "email",
 			type: "email",
