@@ -22,7 +22,7 @@ I’ve been developing Formify over time as a passion project to explore better,
 | Frontend         | Backend/API       | Other Tools        |
 |------------------|-------------------|--------------------|
 | Next.js (App Router) | App Routes / API Routes | Tailwind CSS        |
-| TypeScript       | Custom Validation | Zustand / Redux (if used) |
+| TypeScript       | Custom Validation |
 | React Hook Form  | Auth (JWT) |  |
 
 ---
