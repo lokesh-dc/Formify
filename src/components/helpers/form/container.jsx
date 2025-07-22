@@ -37,6 +37,7 @@ export default function FieldsContainer({
 
 				return (
 					<FormFieldWrapper
+						key={id || index}
 						required={required}
 						label={label}
 						error={formErrors[id]}

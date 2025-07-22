@@ -13,8 +13,10 @@ export default function FormFieldWrapper({
 					<span className="text-red-800">{required ? "*" : null}</span>
 				</label>
 			)}
-			{children}
-			{error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+			<div className="flex flex-col">
+				{children}
+				{error && <p className="text-red-800 text-sm mt-1">{error}</p>}
+			</div>
 		</div>
 	);
 }

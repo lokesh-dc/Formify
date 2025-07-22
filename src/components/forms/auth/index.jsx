@@ -16,20 +16,24 @@ export default function AuthForm() {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		setLoading(true);
-		setError("");
-		const body = { email, password };
 		try {
-			const res = await fetch(endpoint, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(body),
-			});
-			const data = await res.json();
-			if (!res.ok) {
-				throw new Error(data.message || "Something went wrong");
+			let currentErrors = {};
+			for (let { required, id, errorMessage } of currentFormConfig?.fields ||
+				[]) {
+				if (required && !formState[id]) {
+					currentErrors[id] = errorMessage;
+				}
+			}
+
+			if (currentErrors && Object.keys(currentErrors).length > 0) {
+				const error = new Error("Validations failed");
+				error.details = currentErrors;
+				throw error;
 			}
 		} catch (err) {
-			setFormErrors(err.message);
+			setFormErrors(
+				err.details || { common: "Something went wrong! Please try again" }
+			);
 		} finally {
 			setLoading(false);
 		}
@@ -46,15 +50,21 @@ export default function AuthForm() {
 					formErrorSetter={setFormErrors}
 					config={currentFormConfig?.fields}
 				/>
-				<PrimaryButton
-					title={
-						loading
-							? currentFormConfig?.submitLoadingTitle
-							: currentFormConfig?.submitTitle
-					}
-					type="submit"
-					disabled={loading}
-				/>
+				<div className="flex flex-col gap-1">
+					<PrimaryButton
+						title={
+							loading
+								? currentFormConfig?.submitLoadingTitle
+								: currentFormConfig?.submitTitle
+						}
+						type="submit"
+						disabled={loading}
+						clickEvent={handleSubmit}
+					/>
+					{formErrors?.common && (
+						<p className="text-red-800 text-sm">{formErrors?.common}</p>
+					)}
+				</div>
 				{currentFormConfig?.formHelpers ? (
 					<div className="flex gap-1 text-sm">
 						<span className="text-gray-900">

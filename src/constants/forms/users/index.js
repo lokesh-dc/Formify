@@ -30,6 +30,7 @@ export const loginFormConfig = {
 		},
 	],
 	submitTitle: "Login",
+	submitApi: "/api/user/login",
 	submitLoadingTitle: "Logging you in...",
 	formHelpers: {
 		title: "Don't have an account?",
@@ -46,6 +47,15 @@ export const signupFormConfig = {
 	description: "Let's get you signed up in no time",
 	fields: [
 		{
+			id: "fullName",
+			type: "text",
+			label: "Full Name",
+			placeholder: "Lokesh Choudhary",
+			required: false,
+			fieldType: InputFieldType,
+			errorMessage: "Please enter your name",
+		},
+		{
 			id: "email",
 			type: "email",
 			label: "Email",
@@ -55,6 +65,21 @@ export const signupFormConfig = {
 			validations: (email) => {
 				"/^[^s@]+@[^s@]+.[^s@]+$/".test(email);
 			},
+			errorMessage: "Please enter a valid email address",
+		},
+		{
+			id: "userName",
+			type: "text",
+			label: "User Name",
+			placeholder: "lokesh-dc",
+			required: true,
+			isApiDependent: true,
+			apiEndpoint: "/api/users/username/check",
+			fieldType: InputFieldType,
+			validations: (email) => {
+				"/^[^s@]+@[^s@]+.[^s@]+$/".test(email);
+			},
+			errorMessage: "Please enter a valid username",
 		},
 		{
 			id: "password",
@@ -64,6 +89,7 @@ export const signupFormConfig = {
 			required: true,
 			fieldType: InputFieldType,
 			isPassword: true,
+			errorMessage: "Please enter a password",
 		},
 		{
 			id: "confirmPassword",
@@ -73,9 +99,11 @@ export const signupFormConfig = {
 			required: true,
 			fieldType: InputFieldType,
 			isPassword: true,
+			errorMessage: "Please enter a password",
 		},
 	],
 	submitTitle: "Signup",
+	submitApi: "/api/user/signup",
 	submitLoadingTitle: "Signing you up...",
 	formHelpers: {
 		title: "Already have an account?",
