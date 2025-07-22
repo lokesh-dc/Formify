@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📝 Formify – Build Beautiful Forms in Minutes
 
-## Getting Started
+Formify is a modern, customizable form builder that makes collecting information a breeze.  
+Think Google Forms — but faster, prettier, and built with devs and creators in mind.
 
-First, run the development server:
+I’ve been developing Formify over time as a passion project to explore better, more customizable form-building experiences.
+
+## ✨ Features
+
+- ⚡ **Multi-step form flows** for smoother user experience
+- 🎨 **Custom themes** with full control over design
+- 🔀 **Conditional logic** for dynamic form paths
+- 🔒 **Secure data handling** (JWT, cookies, etc.)
+- 📈 **Response dashboard** to view and export data
+- 📱 Fully **responsive & mobile-friendly**
+- 🧱 Built with **Next.js**, **TypeScript**, **Tailwind CSS**
+
+---
+
+## 🚧 Tech Stack
+
+| Frontend         | Backend/API       | Other Tools        |
+|------------------|-------------------|--------------------|
+| Next.js (App Router) | App Routes / API Routes | Tailwind CSS        |
+| TypeScript       | Custom Validation | Zustand / Redux (if used) |
+| React Hook Form  | Auth (JWT) |  |
+
+---
+
+## 🔧 Getting Started
+
+Clone the repo and get your dev on 🚀
 
 ```bash
+git clone https://github.com/your-username/formify.git
+cd formify
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
