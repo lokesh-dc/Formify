@@ -40,6 +40,9 @@ export const loginFormConfig = {
 			to: SignupFormConfigType,
 		},
 	},
+	onSuccess: () => {
+		window.location.href = "/forms";
+	},
 };
 
 export const signupFormConfig = {
@@ -60,6 +63,7 @@ export const signupFormConfig = {
 			type: "email",
 			label: "Email",
 			placeholder: "Enter your email",
+			unique: true,
 			required: true,
 			fieldType: InputFieldType,
 			validations: (email) => {
@@ -68,10 +72,11 @@ export const signupFormConfig = {
 			errorMessage: "Please enter a valid email address",
 		},
 		{
-			id: "userName",
+			id: "username",
 			type: "text",
 			label: "User Name",
 			placeholder: "lokesh-dc",
+			unique: true,
 			required: true,
 			isApiDependent: true,
 			apiEndpoint: "/api/users/username/check",
@@ -112,6 +117,9 @@ export const signupFormConfig = {
 			type: SwitchFormActionType,
 			to: LoginFormConfigType,
 		},
+	},
+	onSuccess: () => {
+		window.location.href = "/forms";
 	},
 };
 

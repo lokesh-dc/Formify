@@ -1,10 +1,14 @@
 "use client";
 import { useState } from "react";
+
 import { getFormConfig, LoginFormConfigType } from "@/constants/forms/users";
+import { SwitchFormActionType } from "@/constants/forms";
+
 import PrimaryButton from "@/components/buttons/primaryButton";
 import FieldsContainer from "@/components/helpers/form/container";
-import { SwitchFormActionType } from "@/constants/forms";
-import axios from "axios";
+
+import APIrequest from "@/utils/requests";
+
 export default function AuthForm() {
 	const [currentForm, setCurrentForm] = useState(LoginFormConfigType);
 	const [currentFormConfig, setCurrentFormConfig] = useState(
@@ -33,12 +37,15 @@ export default function AuthForm() {
 			}
 
 			delete formState["confirmPassword"];
-			const response = await axios.post(
-				currentFormConfig?.submitApi,
-				formState
-			);
+			const response = await APIrequest({
+				api: currentFormConfig?.submitApi,
+				method: "post",
+				data: formState,
+			});
 
-			console.log({ response });
+			if (response?.success && currentFormConfig?.onSuccess) {
+				currentFormConfig?.onSuccess();
+			}
 		} catch (err) {
 			console.error("Error during form submission:", err);
 			setFormErrors(
