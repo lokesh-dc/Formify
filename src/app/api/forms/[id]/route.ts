@@ -1,10 +1,11 @@
 import connectToDatabase from '@/lib/mongodb'
 import Forms from '@/models/forms'
+import { NextRequest } from 'next/server';
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, context: any) {
     try {
-        await connectToDatabase()
-        const { id: formId } = params
+        await connectToDatabase();
+        const { id: formId } = context.params;
         const post = await Forms.findOne({ _id: formId })
         if (!post) {
             throw new Error("Form not found")
