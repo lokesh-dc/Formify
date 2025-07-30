@@ -1,3 +1,5 @@
+const colors = require("./tailwind.colors.js");
+
 module.exports = {
 	content: [
 		"./src/app/**/*.{js,ts,jsx,tsx}", // for layout.tsx, page.tsx, components inside /app
@@ -5,13 +7,7 @@ module.exports = {
 	],
 	theme: {
 		extend: {
-			colors: {
-				primary: "#3e443c",
-				"primary-alpha": "#4f564d30",
-				secondary: "#b4b6af",
-				black: "#1f1f1f",
-				white: "#f1f1f1",
-			},
+			colors,
 		},
 		screens: {
 			short: { raw: "(max-width: 480px) and (max-height: 800px)" },
@@ -23,5 +19,15 @@ module.exports = {
 			"2xl": "1536px",
 		},
 	},
-	plugins: [],
+	plugins: [
+		function ({ addBase }) {
+			const cssVars = Object.entries(colors).reduce((acc, [key, val]) => {
+				acc[`--${key}`] = val;
+				return acc;
+			}, {});
+			addBase({
+				":root": cssVars,
+			});
+		},
+	],
 };

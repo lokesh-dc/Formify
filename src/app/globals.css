@@ -4,13 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --secondary: #b4b6af;
-  --primary: #3e443c;
-  --primary-alfa: #393a393a;
+/* :root {
+  --secondary: #E9E3DF;
+  --primary: #465C88;
+  --highlight: #FF7A30;
+  --primary-alfa: rgb(248, 176, 43);
   --white: #dadada;
   --black: #1f1f1f;
-}
+} */
 
 @theme inline {
   --color-secondary: var(--secondary);
@@ -61,11 +62,11 @@ input {
 }
 
 .circle-green-gradient {
-  background: radial-gradient(circle, rgba(79, 86, 77, 1) 10%, rgba(184, 186, 180, 1) 100%);
+  background: radial-gradient(circle, var(--primary) 10%, var(--secondary) 100%);
 }
 
 @media screen and (max-width : 480px) {
   .circle-green-gradient {
-    background: radial-gradient(circle at bottom, rgba(79, 86, 77, 1) 10%, rgba(184, 186, 180, 1) 100%);
+    background: radial-gradient(circle at bottom, var(--primary) 10%, var(--secondary) 100%);
   }
 }
