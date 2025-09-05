@@ -1,12 +1,10 @@
 import AuthForm from "@/components/forms/auth";
 import NextImageCompo from "@/components/images";
-import PrivateRouteHandler from "@/components/shared/routes";
 import Link from "next/link";
 
 export default function AuthPage() {
 	return (
 		<>
-			<PrivateRouteHandler isAuthPage={true} />
 			<div className="md:p-8 h-[100vh] flex flex-col-reverse md:flex-row md:items-center">
 				<div className="w-full bg-white md:bg-transparent shadow-2xl md:shadow-none md:w-1/2 h-[60%] short:h-[70%] md:h-full">
 					<Link className="hidden md:flex" href={"/"}>
