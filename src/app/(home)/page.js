@@ -1,5 +1,4 @@
 import PrimaryButton from "@/components/buttons/primaryButton";
-import Link from "next/link";
 export default function Home() {
 	return (
 		<div className="h-[100vh] p-2">
